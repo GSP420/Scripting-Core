@@ -13,8 +13,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	Script script;
 	
+	
 	string sName = "script.lua";
-
+	
 	printf("Loading Script \"%s\"........\n\n", sName.c_str());
 
 	if(script.loadScript(sName.c_str()) == false)
@@ -25,6 +26,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	string version = script.getGlobalString("PROGRAM_VERSION");
 	printf("Version: %s\n\n", version.c_str());
 
+	//GRAPHICS CORE VARIABLES (width, height, color,fScreen)
 	int width = (int)script.getGlobalNumber("SCREENWIDTH");
 	int height = (int)script.getGlobalNumber("SCREENHEIGHT");
 	int color = (int)script.getGlobalNumber("COLORDEPTH");
@@ -32,7 +34,23 @@ int _tmain(int argc, _TCHAR* argv[])
 	bool fScreen = script.getGlobalBoolean("FULLSCREEN");
 	printf("Full Screen: %s\n\n", (fScreen)?"true":"false");
 
+	//AUDIO CORE VARIABLES (musicVolume, soundVolume)
+	int musicVolume = (int)script.getGlobalNumber("MUSIC_VOLUME");
+	printf("Music Volume : %i\n\n", musicVolume);
+	int soundVolume = (int)script.getGlobalNumber("SOUND_VOLUME");
+	printf("Sound Volume : %i\n\n", soundVolume);
+
+	//PHYSICS CORE VARIABLES (gravity, maxVelocity, maxAcceleration)
+	int gravity = (int)script.getGlobalNumber("GRAVITY");
+	printf("Gravity : %i\n\n", gravity);
+	int maxVelocity = (int)script.getGlobalNumber("MAX_VELOCITY");
+	printf("Maximum Velocity : %i\n\n", maxVelocity);
+	int maxAcceleration = (int)script.getGlobalNumber("MAX_ACCELERATION");
+	printf("Maximum Acceleration : %i\n\n", maxAcceleration);
+
+
 	system("pause");
+
 	return 0;
 }
 
